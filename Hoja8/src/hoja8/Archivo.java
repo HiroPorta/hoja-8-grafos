@@ -10,16 +10,16 @@ import java.io.*;
  *
  * @author Maria Fernanda Martinez, Adrian Martinez
  */
-public class Archivo {
+public class Archivo{
     
     File archivo;
     FileReader fr;
     BufferedReader br;
-    boolean existe=false;
     int contador=0;
     int numero=10;
     String[] nombres;
     int elementos=0;
+    int[][] pesos;
     
     public void obtenerArchivo(String direccion) throws FileNotFoundException{
        archivo=new File(direccion); 
@@ -122,6 +122,7 @@ public class Archivo {
             }
             System.out.println("");
         }
+        pesos=arreglo;
         return arreglo;
     }
     
