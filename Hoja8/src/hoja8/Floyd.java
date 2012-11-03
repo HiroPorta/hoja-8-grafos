@@ -15,9 +15,9 @@ public class Floyd {
     Archivo a= new Archivo();
     InterfazGrafo D;
     int[][] P;
-    InterfazGrafo grafo = new GraphMatrix();
     int[] max;
     int centro;
+    int minimo=10000;
     
     public Floyd(){
         
@@ -25,8 +25,8 @@ public class Floyd {
             a.obtenerArchivo("C:/Users/Mafer/Documents/Universidad del Valle de Guatemala/Cuarto semestre/Algoritmos y Estructuras de Datos/Hoja de trabajo 8/Hoja8/src/hoja8/datos.txt");
             a.arregloNombres();
             D = a.matrizCostos();
-            P = new int[a.grafo.size()][a.grafo.size()];
-            max = new int[a.grafo.size()];
+            P = new int[25][25];
+            max = new int[25];
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -48,18 +48,18 @@ public class Floyd {
                 }
             }
         }
-        System.out.println("Matriz final: ");
         D.show();
     }
     
     public void centroGrafo(){
+        caminoCorto();
         int n=0;       
-        for(int i=0;i<a.grafo.size();i++){
-            for(int j=0;j<a.grafo.size()-1;j++){
-                int num1=D.getEdge(a.grafo.get(j), a.grafo.get(i));
+        for(int i=0;i<D.size();i++){
+            for(int j=0;j<D.size()-1;j++){
+                int num1=D.getEdge(D.get(j), D.get(i));
                 n=j;
                 n++;
-                int num2=D.getEdge(a.grafo.get(n), a.grafo.get(i));
+                int num2=D.getEdge(D.get(n), D.get(i));
                 if(num1>num2){
                     max[i]=num1;
                 }
@@ -69,24 +69,15 @@ public class Floyd {
             }
             n++;
         }
-        System.out.println("maximos");
-        for(int i=0;i<a.grafo.size();i++){
-            System.out.print(max[i]+" ");
-        }
-        n=0;
-        for(int i=0;i<a.grafo.size()-1;i++){
+        
+        for(int i=0;i<D.size();i++){
             int num1=max[i];
-            n=i;
-            n++;
-            int num2=max[n];
-            if(num1<num2){
-                centro=num1;
-            }
-            else{
-                centro=num2;
+            if(num1<minimo){
+                centro=i;
+                minimo=num1;
             }
         }
-        System.out.println("\nEl centro es: "+centro);
+        System.out.println("\nEl centro del grafo es: "+D.get(centro)+"\n");
         
     }
 }

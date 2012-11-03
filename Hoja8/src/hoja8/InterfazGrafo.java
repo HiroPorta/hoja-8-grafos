@@ -29,7 +29,7 @@ public interface InterfazGrafo<V,E> {
     // post: returns actual label of indicated vertex
     public int getEdge(V label1, V label2);
     // post: returns actual edge between vertices
-    //public boolean contains(V label);
+    public boolean contains(V label);
     // post: returns true iff vertex with "equals" label exists
     //public boolean containsEdge(V vLabel1, V vLabel2);
     // post: returns true iff edge with "equals" label exists
