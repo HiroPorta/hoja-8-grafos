@@ -16,6 +16,8 @@ public class Floyd {
     InterfazGrafo D;
     int[][] P;
     InterfazGrafo grafo = new GraphMatrix();
+    int[] max;
+    int centro;
     
     public Floyd(){
         
@@ -24,6 +26,7 @@ public class Floyd {
             a.arregloNombres();
             D = a.matrizCostos();
             P = new int[a.grafo.size()][a.grafo.size()];
+            max = new int[a.grafo.size()];
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -47,6 +50,44 @@ public class Floyd {
         }
         System.out.println("Matriz final: ");
         D.show();
+    }
+    
+    public void centroGrafo(){
+        int n=0;       
+        for(int i=0;i<a.grafo.size();i++){
+            for(int j=0;j<a.grafo.size()-1;j++){
+                int num1=D.getEdge(a.grafo.get(j), a.grafo.get(i));
+                n=j;
+                n++;
+                int num2=D.getEdge(a.grafo.get(n), a.grafo.get(i));
+                if(num1>num2){
+                    max[i]=num1;
+                }
+                else{
+                    max[i]=num2;
+                }
+            }
+            n++;
+        }
+        System.out.println("maximos");
+        for(int i=0;i<a.grafo.size();i++){
+            System.out.print(max[i]+" ");
+        }
+        n=0;
+        for(int i=0;i<a.grafo.size()-1;i++){
+            int num1=max[i];
+            n=i;
+            n++;
+            int num2=max[n];
+            if(num1<num2){
+                centro=num1;
+            }
+            else{
+                centro=num2;
+            }
+        }
+        System.out.println("\nEl centro es: "+centro);
+        
     }
 }
 
