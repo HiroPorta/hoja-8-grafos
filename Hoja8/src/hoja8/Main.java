@@ -38,7 +38,7 @@ public class Main {
         Floyd matriz = new Floyd();
         
         matriz.caminoCorto();
-        
+        matriz.centroGrafo();
         
         
     }
