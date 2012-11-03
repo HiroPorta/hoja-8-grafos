@@ -13,18 +13,12 @@ import java.util.Vector;
 public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
 
     private Vector vertices = new Vector();
-    private int[][] arcos;
+    private int[][] arcos= new int [25][25];
     
-    
-    @Override
-    public void add(V label) {
+    public GraphMatrix(){
         
-        if(!vertices.contains(label)){
-            vertices.add(label);
-        }
-        arcos = new int[vertices.size()][vertices.size()];
-        for(int i=0;i<vertices.size();i++){
-            for(int j=0;j<vertices.size();j++){
+        for(int i=0;i<25;i++){
+            for(int j=0;j<25;j++){
                 if(i==j){
                     arcos[i][j]=0;
                 }
@@ -33,6 +27,14 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
                 }
             }
         }
+    }
+    @Override
+    public void add(V label) {
+        
+        if(!vertices.contains(label)){
+            vertices.add(label);
+        }
+        
         
     }
 
@@ -70,5 +72,9 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
         
         return (V)vertices.get(label);
         
+    }
+    
+    public boolean contains(V label){
+        return vertices.contains(label);
     }
 }
