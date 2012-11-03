@@ -18,15 +18,16 @@ public interface InterfazGrafo<V,E> {
     // pre: vtx1 and vtx2 are labels of existing vertices
     // post: an edge (possibly directed) is inserted between
     // vtx1 and vtx2.
+    public void show();
     //public V remove(V label);
     // pre: label is non-null vertex label
     // post: vertex with "equals" label is removed, if found
     //public E removeEdge(V vLabel1, V vLabel2);
     // pre: vLabel1 and vLabel2 are labels of existing vertices
     // post: edge is removed, its label is returned
-    //public V get(V label);
+    public V get(int label);
     // post: returns actual label of indicated vertex
-    //public Edge<V,E> getEdge(V label1, V label2);
+    public int getEdge(V label1, V label2);
     // post: returns actual edge between vertices
     //public boolean contains(V label);
     // post: returns true iff vertex with "equals" label exists
@@ -42,7 +43,7 @@ public interface InterfazGrafo<V,E> {
     // post: returns visited flag on edge between vertices
     //public void reset();
     // post: resets visited flags to false
-    //public int size();
+    public int size();
     // post: returns the number of vertices in graph
     //public int degree(V label);
     // pre: label labels an existing vertex

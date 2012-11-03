@@ -15,117 +15,40 @@ public class Archivo{
     File archivo;
     FileReader fr;
     BufferedReader br;
-    int contador=0;
-    int numero=10;
-    String[] nombres;
-    int elementos=0;
-    int[][] pesos;
+    InterfazGrafo grafo = new GraphMatrix();
+
     
     public void obtenerArchivo(String direccion) throws FileNotFoundException{
        archivo=new File(direccion); 
     }  
     
-    public String[] arregloNombres() throws IOException{
+    public InterfazGrafo arregloNombres() throws IOException{
         // Lectura del fichero
         fr = new FileReader (archivo);
         br = new BufferedReader(fr);
         String linea;
-        String[] arreglo= new String[numero];
-        for(int i=0;i<numero;i++){
-            arreglo[i]="";
-        }
-        int i=0;
         while((linea=br.readLine())!=null){
             String[] tmp;
             tmp=linea.split(" ");
-            arreglo[i]=tmp[0];
-            elementos++;
-            for(int j=0;j<arreglo.length;j++){
-                if(!arreglo[j].contentEquals("")){
-                    if(arreglo[i].contentEquals(arreglo[j])){
-                        contador++;
-                        if(contador>1){
-                            arreglo[i]="";
-                            i--;
-                            elementos--;
-                        }
-                    }
-                }
-            }
-            contador=0;
-            i++;
-            arreglo[i]=tmp[1];
-            elementos++;
-            for(int j=0;j<arreglo.length;j++){
-                if(!arreglo[j].contentEquals("")){
-                    if(arreglo[i].contentEquals(arreglo[j])){
-                        contador++;
-                        if(contador>1){
-                            arreglo[i]="";
-                            i--;
-                            elementos--;
-                        }
-                    }
-                }
-            }
-            contador=0;
-            i++;
+            grafo.add(tmp[0]);
+            grafo.add(tmp[1]);
         }
-        
-        for(int j=0; j<arreglo.length; j++)
-        {         System.out.println(arreglo[j]);}
-        
-        nombres=arreglo;
-        return arreglo;
+        return grafo;
     }
     
-    public int[][] matrizCostos() throws IOException{
+    public InterfazGrafo matrizCostos() throws IOException{
         // Lectura del fichero
         fr = new FileReader (archivo);
         br = new BufferedReader(fr);
         String linea;
-        int[][] arreglo= new int[elementos][elementos];
-        for(int i=0;i<elementos;i++){
-            for(int j=0;j<elementos;j++){
-                if(i==j){
-                    arreglo[i][j]=0;
-                }
-                else{
-                    arreglo[i][j]=10000;
-                }
-            }
-        }
-        int i=0;
-        int j=0;
+
         while((linea=br.readLine())!=null){
             String[] tmp;
             tmp=linea.split(" ");
-            for(int a=0;a<nombres.length;a++){
-                if(nombres[a].contentEquals(tmp[0])){
-                    i=a;
-                    break;
-                }
-            }
-            for(int b=0;b<nombres.length;b++){
-                if(nombres[b].contentEquals(tmp[1])){
-                    j=b;
-                    break;
-                }
-            }
-            int costo = Integer.parseInt(tmp[2]);
-            System.out.println("El costo es "+costo);
-            arreglo[i][j]=costo;
+            grafo.addEdge(tmp[0], tmp[1], tmp[2]);
         }
-        for(int a=0;a<arreglo.length;a++){
-            for(int b=0;b<arreglo.length;b++){
-                System.out.print(""+arreglo[a][b]+" ");
-            }
-            System.out.println("");
-        }
-        pesos=arreglo;
-        return arreglo;
+        return grafo;
     }
     
-    
-    
+
 }
