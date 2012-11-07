@@ -1,6 +1,9 @@
 package hoja8;
 
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Maria Fernanda Martinez, Adrian Martinez
@@ -66,6 +69,12 @@ public class Main {
                     String ciudad2 = scan.next();
                     if(matriz.D.contains(ciudad1)&&matriz.D.contains(ciudad2)){
                         matriz.D.addEdge(ciudad1, ciudad2, 10000);
+                        // Guarda los cambios en el archivo
+                        try {
+                            matriz.a.write(ciudad1+" "+ciudad2+" 10000");
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
                     }
                 }
                 // Si la respuesta es 2, preguntar por el nombre de las ciudades y agregar nueva distancia.
@@ -85,6 +94,12 @@ public class Main {
                         matriz.D.add(ciudad1);
                         matriz.D.add(ciudad2);
                         matriz.D.addEdge(ciudad1, ciudad2, distancia);
+                    }
+                    // Guarda los cambios en el archivo
+                    try {
+                        matriz.a.write(ciudad1+" "+ciudad2+" "+distancia);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
                     }
                 }
                 // Recalcular las rutas mas cortas
