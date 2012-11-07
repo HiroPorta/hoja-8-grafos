@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package hoja8;
 
 import java.io.*;
@@ -18,10 +14,24 @@ public class Archivo{
     InterfazGrafo grafo = new GraphMatrix();
 
     
+    /**
+     * Nombre: obtenerArchivo
+     * Descripcion: 
+     * No hay valor de retorno
+     * @param direccion
+     * @throws FileNotFoundException
+     */
     public void obtenerArchivo(String direccion) throws FileNotFoundException{
        archivo=new File(direccion); 
     }  
     
+    /**
+     * Nombre: arregloNombres
+     * Descripcion: obtiene los nombres de los nodos para el grafo
+     * No tiene parametros
+     * @return
+     * @throws IOException
+     */
     public InterfazGrafo arregloNombres() throws IOException{
         // Lectura del fichero
         fr = new FileReader (archivo);
@@ -36,6 +46,13 @@ public class Archivo{
         return grafo;
     }
     
+    /**
+     * Nombre: matrizCostos
+     * Descripcion: obtiene los pesos de los arcos entre nodos del grafo
+     * No tiene parametros
+     * @return
+     * @throws IOException
+     */
     public InterfazGrafo matrizCostos() throws IOException{
         // Lectura del fichero
         fr = new FileReader (archivo);

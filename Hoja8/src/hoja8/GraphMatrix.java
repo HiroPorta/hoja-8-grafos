@@ -1,13 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package hoja8;
 
 import java.util.Vector;
 
 /**
  *
+ * @param <V> 
+ * @param <E> 
  * @author Maria Fernanda Martinez, Adrian Martinez
  */
 public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
@@ -15,6 +13,13 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
     private Vector vertices = new Vector();
     private int[][] arcos= new int [25][25];
     
+    /**
+     * Nombre: GraphMatrix
+     * Descripcion: constructor de la clase
+     * Pre: no hay
+     * Post: el arreglo de arcos inicializado
+     * No hay parametros ni valor de retorno
+     */
     public GraphMatrix(){
         
         for(int i=0;i<25;i++){
@@ -28,6 +33,10 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
             }
         }
     }
+    /**
+     *
+     * @param label
+     */
     @Override
     public void add(V label) {
         
@@ -38,6 +47,12 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
         
     }
 
+    /**
+     *
+     * @param vtx1
+     * @param vtx2
+     * @param label
+     */
     @Override
     public void addEdge(V vtx1, V vtx2, E label) {
         int i = vertices.indexOf(vtx1);
@@ -47,6 +62,9 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
         arcos[i][j]=peso;
     }
     
+    /**
+     *
+     */
     @Override
     public void show(){
         for(int a=0;a<vertices.size();a++){
@@ -57,16 +75,31 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
         }
     }
     
+    /**
+     *
+     * @return
+     */
     @Override
     public int size(){
         return vertices.size();
     }
     
+    /**
+     *
+     * @param label1
+     * @param label2
+     * @return
+     */
     @Override
     public int getEdge(V label1, V label2){
         return arcos[vertices.indexOf(label1)][vertices.indexOf(label2)];
     }
     
+    /**
+     *
+     * @param label
+     * @return
+     */
     @Override
     public V get(int label){
         
@@ -74,11 +107,21 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
         
     }
     
+    /**
+     *
+     * @param label
+     * @return
+     */
     @Override
     public int getIndex(V label){
         return vertices.indexOf(label);
     }
     
+    /**
+     *
+     * @param label
+     * @return
+     */
     public boolean contains(V label){
         return vertices.contains(label);
     }
