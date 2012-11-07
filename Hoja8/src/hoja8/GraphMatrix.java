@@ -74,6 +74,11 @@ public class GraphMatrix<V,E> implements InterfazGrafo<V,E>{
         
     }
     
+    @Override
+    public int getIndex(V label){
+        return vertices.indexOf(label);
+    }
+    
     public boolean contains(V label){
         return vertices.contains(label);
     }
