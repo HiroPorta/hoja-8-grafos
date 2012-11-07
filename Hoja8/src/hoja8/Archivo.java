@@ -11,12 +11,14 @@ public class Archivo{
     File archivo;
     FileReader fr;
     BufferedReader br;
+    FileWriter fw;
+    PrintWriter pw;
     InterfazGrafo grafo = new GraphMatrix();
 
     
     /**
      * Nombre: obtenerArchivo
-     * Descripcion: 
+     * Descripcion: obtiene el archivo
      * No hay valor de retorno
      * @param direccion
      * @throws FileNotFoundException
@@ -44,6 +46,21 @@ public class Archivo{
             grafo.add(tmp[1]);
         }
         return grafo;
+    }
+    
+    /**
+     * Nombre: write
+     * Descripcion: escritura del archivo
+     * Pre: no hay
+     * Post: archivo escrito
+     * No hay valor de retorno
+     * @param cadena
+     * @throws IOException
+     */
+    public void write(String cadena) throws IOException{
+        fw = new FileWriter(archivo);
+        pw = new PrintWriter(fw);
+        pw.println(cadena);
     }
     
     /**
