@@ -1,71 +1,94 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package hoja8;
 
 /**
  *
+ * @param <V> 
+ * @param <E> 
  * @author Maria Fernanda Martinez, Adrian Martinez
  */
 public interface InterfazGrafo<V,E> {
 
+    /**
+     * Nombre: add
+     * Descripcion: agrega nodo al grafo
+     * Pre: label no es null
+     * Post: nodo con nombre agregado al grafo
+     * Si el nodo ya existe, no hay accion
+     * No hay valor de retorno
+     * @param label
+     */
     public void add(V label);
-    // pre: label is a non-null label for vertex
-    // post: a vertex with label is added to graph
-    // if vertex with label is already in graph, no action
+
+    /**
+     * Nombre: addEdge
+     * Descripcion: agregar conexion entre nodos
+     * Pre: vtx1 y vtx2 son nombres de nodos existentes
+     * Post: conexion entre vtx1 y vtx2
+     * No hay valor de retorno
+     * @param vtx1
+     * @param vtx2
+     * @param label
+     */
     public void addEdge(V vtx1, V vtx2, E label);
-    // pre: vtx1 and vtx2 are labels of existing vertices
-    // post: an edge (possibly directed) is inserted between
-    // vtx1 and vtx2.
+    
+    /**
+     * Nombre: show
+     * Descipcion: desplegar el grafo
+     * Pre: existe el grafo
+     * Post: grafo desplegado
+     * No hay parametros ni valor de retorno
+     */
     public void show();
-    //public V remove(V label);
-    // pre: label is non-null vertex label
-    // post: vertex with "equals" label is removed, if found
-    //public E removeEdge(V vLabel1, V vLabel2);
-    // pre: vLabel1 and vLabel2 are labels of existing vertices
-    // post: edge is removed, its label is returned
+    
+    /**
+     * Nombre: getIndex
+     * Descripcion: obtiene la posicion de un nodo
+     * Pre: label existe en el grafo
+     * Post: indice del nodo
+     * @param label
+     * @return
+     */
     public int getIndex(V label);
-    //pre: label to search
-    //post: index (int) of the label search
+    
+    /**
+     * Nombre: get
+     * Descipción: obtiene el nodo en la posicion label
+     * Pre: no hay
+     * Post: regresa el nombre del nodo
+     * @param label
+     * @return
+     */
     public V get(int label);
-    // post: returns actual label of indicated vertex
+    
+    /**
+     * Nombre: getEdge
+     * Descipcion: obtiene el peso de la conexion entre dos nodos
+     * Pre: no hay
+     * Post: regresa el valor actual de la conexion
+     * @param label1
+     * @param label2
+     * @return
+     */
     public int getEdge(V label1, V label2);
-    // post: returns actual edge between vertices
+    
+    /**
+     * Nombre: contains
+     * Descripcion: verifica si el nodo indicado existe en el grafo
+     * Pre: no hay
+     * Post: regresa true si el vertice existe en el grafo
+     * @param label
+     * @return
+     */
     public boolean contains(V label);
-    // post: returns true iff vertex with "equals" label exists
-    //public boolean containsEdge(V vLabel1, V vLabel2);
-    // post: returns true iff edge with "equals" label exists
-    //public boolean visit(V label);
-    // post: sets visited flag on vertex, returns previous value
-    //public boolean visitEdge(Edge<V,E> e);
-    // pre: sets visited flag on edge; returns previous value
-    //public boolean isVisited(V label);
-    // post: returns visited flag on labeled vertex
-    //public boolean isVisitedEdge(Edge<V,E> e);
-    // post: returns visited flag on edge between vertices
-    //public void reset();
-    // post: resets visited flags to false
+    
+    /**
+     * Nombre: size
+     * Descripcion: indica la cantidad de nodos en el grafo
+     * Pre: no hay
+     * Post: regresa el numero de nodos en el grafo
+     * No hay parametros
+     * @return
+     */
     public int size();
-    // post: returns the number of vertices in graph
-    //public int degree(V label);
-    // pre: label labels an existing vertex
-    // post: returns the number of vertices adjacent to vertex
-    //public int edgeCount();
-    // post: returns the number of edges in graph
-    //public Iterator<V> iterator();
-    // post: returns iterator across all vertices of graph
-    //public Iterator<V> neighbors(V label);
-    // pre: label is label of vertex in graph
-    // post: returns iterator over vertices adj. to vertex
-    // each edge beginning at label visited exactly once
-    //public Iterator<Edge<V,E>> edges();
-    // post: returns iterator across edges of graph
-    // iterator returns edges; each edge visited once
-    //public void clear();
-    // post: removes all vertices from graph
-    //public boolean isEmpty();
-    // post: returns true if graph contains no vertices
-    //public boolean isDirected();
-    // post: returns true if edges of graph are directed
+    
 }
