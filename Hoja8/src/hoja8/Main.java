@@ -41,7 +41,9 @@ public class Main {
                 String ciudad2 = scan.next();
                 if(matriz.D.contains(ciudad1)&&matriz.D.contains(ciudad2)){
                     System.out.println("\nLa ruta mas corta es: "+matriz.D.getEdge(ciudad1, ciudad2));
-                    //FALTA MOSTRAR LAS CIUDADES INTERMEDIAS
+                    int ind2=matriz.D.getIndex(ciudad2);
+                    int ind1=matriz.D.getIndex(ciudad1);
+                    System.out.println("\nLa ciudad intermedia es: "+matriz.D.get(matriz.P[ind1][ind2]));
                 }
             }
             else if(seleccion==2){

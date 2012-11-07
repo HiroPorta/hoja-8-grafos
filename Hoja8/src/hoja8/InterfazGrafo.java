@@ -25,6 +25,9 @@ public interface InterfazGrafo<V,E> {
     //public E removeEdge(V vLabel1, V vLabel2);
     // pre: vLabel1 and vLabel2 are labels of existing vertices
     // post: edge is removed, its label is returned
+    public int getIndex(V label);
+    //pre: label to search
+    //post: index (int) of the label search
     public V get(int label);
     // post: returns actual label of indicated vertex
     public int getEdge(V label1, V label2);
